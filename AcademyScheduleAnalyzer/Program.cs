@@ -1,4 +1,6 @@
-﻿namespace AcademyScheduleAnalyzer;
+﻿using System.Text;
+
+namespace AcademyScheduleAnalyzer;
 class Program
 {
     static void Main(string[] args)
@@ -195,6 +197,34 @@ class Program
 
         foreach (var name in CopiedArrays)
             Console.WriteLine(name);  // Display copied array (Changed)
+    }
+
+    #endregion
+
+    #region Part 5 - Duration Analysis
+            
+    static int GetTotalDuration(int[] durations)
+      => durations.Sum();
+    static double GetAverageDuration(int[] durations)
+      => durations.Average();
+    static int GetLongestDuration(int[] durations)
+      => durations.Max();
+    static int GetShortestDuration(int[] durations)
+      => durations.Min();
+
+    static void CopyDurations(int[] durations)
+    {
+        var CopiedArrays = new int[durations.Length];
+        Array.Copy(durations, CopiedArrays, durations.Length);
+        Array.Sort(CopiedArrays);   
+
+        foreach (var duration in durations)
+            Console.WriteLine(duration);  // Display original array (Not Sorted)
+
+        Console.WriteLine();
+
+        foreach (var duration in CopiedArrays)
+            Console.WriteLine(duration);  // Display copied array (Sorted)
     }
 
     #endregion
