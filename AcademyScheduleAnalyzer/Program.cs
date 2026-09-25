@@ -34,4 +34,21 @@ class Program
 
         #endregion
     }
+
+    #region Part 2 — Display All Sessions
+
+    static void DisplayAllSessions(string[] names, DateTime[] dates, int[] durations)
+    {
+        for (int i = 0; i < names.Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {names[i]}"
+                            + $"\nDate: {dates[i]:MMMM dd yyyy}"
+                            + $"\nStart Time: {TimeOnly.FromDateTime(dates[i])}"
+                            + $"\nDuration: {durations[i]} minutes"
+                            + $"\n");
+        }
+    }
+
+    #endregion
+
 }
