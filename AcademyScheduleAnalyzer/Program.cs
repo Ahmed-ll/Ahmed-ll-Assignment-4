@@ -51,4 +51,29 @@ class Program
 
     #endregion
 
+    #region Part 3 — Search Function
+
+    static void SearchSessionByName(string[] names, DateTime[] dates, int[] durations)
+    {
+        Console.WriteLine("Enter the name of the session to search for:");
+        string sessionName = Console.ReadLine();
+
+        // using Array.IndexOf to find the index of the session name in the names array
+        int index = Array.IndexOf(names, sessionName);
+
+        if (index == -1)
+        {
+            Console.WriteLine("Session not found.");
+            return;
+        }
+
+        Console.WriteLine($"{index + 1}. {names[index]}"
+                        + $"\nDate: {dates[index]:MMMM dd yyyy}"
+                        + $"\nStart Time: {TimeOnly.FromDateTime(dates[index])}"
+                        + $"\nDuration: {durations[index]} minutes"
+                        + $"\n");
+    }
+
+    #endregion
+
 }
