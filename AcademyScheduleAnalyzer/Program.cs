@@ -359,4 +359,34 @@ class Program
 
     #endregion
 
+    #region  Part 10 — Date Difference
+
+    static void GetTwoSessionsDateDifference(string sessionOne, string sessionTwo, string[] sessionNames, DateTime[] sessionDates)
+    {
+        int index1 = Array.IndexOf(sessionNames, sessionOne);
+        if (index1 == -1)
+        {
+            Console.WriteLine($"{sessionOne} session not found.");
+            return;
+        }
+        int index2 = Array.IndexOf(sessionNames, sessionTwo);
+        if (index2 == -1)
+        {
+            Console.WriteLine($"{sessionTwo} session not found.");
+            return;
+        }
+
+        TimeSpan difference;
+        if (sessionDates[index1] > sessionDates[index2])
+            difference = sessionDates[index1] - sessionDates[index2];
+        else
+            difference = sessionDates[index2] - sessionDates[index1];
+
+        Console.WriteLine("Difference: "
+                      + $"{difference.Days} days\n"
+                      + $"{difference.TotalHours} hours");
+    }
+
+    #endregion
+
 }
