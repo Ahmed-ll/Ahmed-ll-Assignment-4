@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Threading.Channels;
 
 namespace AcademyScheduleAnalyzer;
 class Program
@@ -296,6 +297,32 @@ class Program
 
         return allSessions.ToString();
     }
+
+    #endregion
+
+    #region Part 7 - Ref and Out
+
+    // 7.1 ref
+    static void PassingByRef(ref int number) => number += 10;
+
+    // 7.2 out
+    static bool GetSessionIndexAndDuration(string sessionName, string[] sessionNames, int[] sessionDurations, out int index, out int duration)
+    {
+        int ind = Array.IndexOf(sessionNames, sessionName);
+        if (ind == -1)
+        {
+            index = -1;
+            duration = -1;
+            return false;
+        }
+
+        index = ind;
+        duration = sessionDurations[ind];
+        return true;
+    }
+
+    // 7.3 Reference Type Without ref
+    static void ChangeArray(int[] array) => array[0] = 100;
 
     #endregion
 
