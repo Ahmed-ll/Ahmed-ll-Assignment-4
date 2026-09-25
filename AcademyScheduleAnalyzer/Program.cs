@@ -76,4 +76,127 @@ class Program
 
     #endregion
 
+    #region Part 4 - Array Methods Practice
+
+    // 4.1 Sort Session Names
+    static void SortSessionsByName(string[] names)
+    {
+        var CopiedArrays = new string[names.Length];
+        Array.Copy(names, CopiedArrays, names.Length);
+        Array.Sort(CopiedArrays);
+
+
+        foreach (var name in names)
+            Console.WriteLine(name);  // Display original array (Not Sorted)
+
+        Console.WriteLine();
+
+        foreach (var name in CopiedArrays)
+            Console.WriteLine(name);  // Display copied array (Sorted)
+    }
+
+    // 4.2 Reverse Session Names
+    static void ReverseSessionNames(string[] names)
+    {
+        var CopiedArrays = new string[names.Length];
+        Array.Copy(names, CopiedArrays, names.Length);
+        Array.Reverse(CopiedArrays);
+
+
+        foreach (var name in names)
+            Console.WriteLine(name);  // Display original array (Not Reversed)
+
+        Console.WriteLine();
+
+        foreach (var name in CopiedArrays)
+            Console.WriteLine(name);  // Display copied array (Reversed)
+    }
+
+    // 4.3 Find Session Index
+    static void FindSessionIndex(string[] names)
+    {
+        Console.Write("Enter session name: ");
+        string sessionName = Console.ReadLine();
+
+        int index = Array.IndexOf(names, sessionName);
+
+        if (index == -1)
+        {
+            Console.WriteLine("Session not found.");
+            return;
+        }
+
+        Console.WriteLine($"Index: {index}");
+    }
+
+    // 4.4 Check if a Session Exists
+    static void CheckSessionExists(string[] names)
+    {
+        Console.Write("Enter session name: ");
+        string sessionName = Console.ReadLine();
+
+        bool exists = Array.Exists(names, x => x == sessionName);
+
+        if (!exists)
+        {
+            Console.WriteLine("Session does not exist.");
+            return;
+        }
+
+        Console.WriteLine("Session exists.");
+    }
+
+    // 4.5 Find a Session
+    static void FindSession(string[] names)
+    {
+        Console.Write("Enter session name: ");
+        string sessionName = Console.ReadLine();
+
+        var session = Array.Find(names, x => x.Contains(sessionName, StringComparison.OrdinalIgnoreCase));
+
+        if (session is null)
+        {
+            Console.WriteLine("Session not found.");
+            return;
+        }
+
+        Console.WriteLine(session);
+    }
+
+    // 4.6 Find a Session Index Using a Condition
+    static void FindSessionIndexUsingCondition(string[] names)
+    {   
+        Console.Write("Enter session name: ");
+        string sessionName = Console.ReadLine();
+            
+        int index = Array.FindIndex(names, x => x.Contains(sessionName, StringComparison.OrdinalIgnoreCase));
+
+        if (index == -1)
+        {
+            Console.WriteLine("Session not found.");
+            return;
+        }
+
+        Console.WriteLine($"Index: {index}");
+    }
+
+    // 4.7 Copy an Array
+    static void CopyArray(string[] names)
+    {
+        var CopiedArrays = new string[names.Length];
+        Array.Copy(names, CopiedArrays, names.Length);
+
+        CopiedArrays[0] = "EF Core";  // Modify the copied array
+
+        foreach (var name in names)
+            Console.WriteLine(name);  // Display original array (Not Changed)
+
+        Console.WriteLine();
+
+        foreach (var name in CopiedArrays)
+            Console.WriteLine(name);  // Display copied array (Changed)
+    }
+
+    #endregion
+
 }
