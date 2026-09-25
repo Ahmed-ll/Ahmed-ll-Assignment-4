@@ -326,4 +326,11 @@ class Program
 
     #endregion
 
+    #region Part 8 — params Keyword
+
+    static int CalculateTotalDuration(params int[] durations)
+        => durations.Sum();
+
+    #endregion
+
 }
