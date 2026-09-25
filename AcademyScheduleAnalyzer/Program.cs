@@ -229,4 +229,74 @@ class Program
 
     #endregion
 
+    #region Part 6 — Functions
+
+    // DisplaySessions, DisplaySessionDetails (Received Arrays +  Return no value using void) (implemented in Part 2)
+    // SearchSession (Received Arrays +  Return no value using void)  (implemented in Part 3)
+    // GetTotalDuration (Return int) (implemented in Part 3)
+    // GetAverageDuration (Return double) (implemented in Part 3)
+    // GetShortestDuration (Return int) (implemented in Part 3)
+    // GetLongestDuration (Return int) (implemented in Part 3)
+
+    // GetSessionEndTime (Return DateTime)
+    static DateTime? GetSessionEndTime(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+    {
+        Console.Write("Enter session name: ");
+        string sessionName = Console.ReadLine();
+
+        int index = Array.FindIndex(sessionNames, name => name == sessionName);
+        if (index == -1)
+        {
+            Console.WriteLine("Session not found.");
+            return null;
+        }
+
+        DateTime endTime = sessionDates[index].AddMinutes(sessionDurations[index]);
+        return endTime;
+    }
+
+
+    // ReadSessionDate (Receive parameter)
+    static void ReadSessionDate(string[] sessionNames, DateTime[] sessionDates, int index)
+    {
+        if (index >= 0 && index < sessionDates.Length)
+        {
+            Console.WriteLine($"Session: {sessionNames[index]}");
+            Console.WriteLine($"Date: {sessionDates[index]:dddd, dd MMMM yyyy - hh:mm tt}");
+        }
+        else
+            Console.WriteLine("Invalid index.");
+    }
+
+    // BuildReportUsingString (return String)
+    static string BuildReportUsingString(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+    {
+        string allSessions = "";
+        for (int i = 0; i < sessionNames.Length; i++)
+        {
+            allSessions +=
+                $"Session Name: {sessionNames[i]}" +
+                $" - Session Date: {sessionDates[i]}" +
+                $" - Session Duration: {sessionDurations[i].ToString()} minutes \n";
+        }
+
+        return allSessions;
+    }
+
+    // BuildReportUsingStringBuilder (return String)
+    static string BuildReportUsingStringBuilder(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations)
+    {
+        var allSessions = new StringBuilder();
+        for (int i = 0; i < sessionNames.Length; i++)
+        {
+            allSessions.Append($"Session Name: {sessionNames[i]}" +
+                               $" - Session Date: {sessionDates[i]}" +
+                               $" - Session Duration: {sessionDurations[i].ToString()} minutes \n");
+        }
+
+        return allSessions.ToString();
+    }
+
+    #endregion
+
 }
