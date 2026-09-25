@@ -333,4 +333,30 @@ class Program
 
     #endregion
 
+    #region Part 9 — Session Date Details
+
+    static void DisplaySessionDateDetails(string[] sessionNames, DateTime[] sessionDates, int[] sessionDurations, string sessionName)
+    {
+        int index = Array.IndexOf(sessionNames, sessionName);
+
+        if (index < 0 || index >= sessionDates.Length)
+        {
+            Console.WriteLine("Invalid index.");
+            return;
+        }
+        DateTime sessionDate = sessionDates[index];
+
+        Console.WriteLine($"Session: {sessionName}");
+        Console.WriteLine($"Date: {sessionDate:dd MMMM yyyy}");
+        Console.WriteLine($"Day: {sessionDate.DayOfWeek}");
+        Console.WriteLine($"Year: {sessionDate.Year}");
+        Console.WriteLine($"Month: {sessionDate.Month}");
+        Console.WriteLine($"Day: {sessionDate.Day}");
+        Console.WriteLine($"Duration: {sessionDurations[index]} minutes");
+        Console.WriteLine($"Start Time: {sessionDate:hh:ss tt}");
+        Console.WriteLine($"End Time: {sessionDate.AddMinutes(sessionDurations[index]):hh:mm tt}");
+    }
+
+    #endregion
+
 }
