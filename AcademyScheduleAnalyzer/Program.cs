@@ -579,4 +579,18 @@ class Program
 
     #endregion
 
+    #region Part 19 — Build a Schedule Report Using string
+
+    static void ScheduleReportUsingString(string[] sessionNames, DateTime[] sessionDates, int[] sessionsDurations)
+    {
+        string result = "";
+
+        for (int i = 0; i < sessionNames.Length; i++)
+            result += $"{sessionNames[i]}, {sessionDates[i]}, {sessionsDurations[i]} minutes.\n";
+
+        Console.WriteLine(result);
+    }
+
+    #endregion
+
 }
