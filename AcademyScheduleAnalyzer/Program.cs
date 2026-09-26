@@ -556,4 +556,27 @@ class Program
 
     #endregion
 
+    #region Part 18 — finally
+
+    static void ValidateNumberWithFinally()
+    {
+        Console.Write("Enter number: ");
+
+        try
+        {
+            int number = int.Parse(Console.ReadLine());
+            Console.WriteLine($"The input is: {number}");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("The input is not a number, please enter a valid number.");
+        }
+        finally
+        {
+            Console.WriteLine("Validation completed.");
+        }
+    }
+
+    #endregion
+
 }
