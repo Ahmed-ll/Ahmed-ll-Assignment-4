@@ -404,4 +404,38 @@ class Program
 
     #endregion
 
+    #region Part 12 — Find the Next Session
+
+    static void FindNextSession(string[] sessionNames, DateTime[] sessionDates)
+    {
+        DateTime current = DateTime.Now;
+        int nextIndex = -1;
+        TimeSpan TimeDifference = TimeSpan.MaxValue;
+        for (int i = 0; i < sessionDates.Length; i++)
+        {
+            if (sessionDates[i] > current)
+            {
+                TimeSpan timeDifference = sessionDates[i] - current; // for example: 5 days , 2 days , 4 days
+                if (timeDifference < TimeDifference) 
+                {
+                    // in 1st iteration: 5 days < TimeDifference(Max) => TimeDifference = 5 days
+                    // in 2nd iteration: 2 days < TimeDifference(5 days) => TimeDifference = 2 days
+                    // in 3rd iteration: 4 days < TimeDifference(2 days) => false
+                    TimeDifference = timeDifference; 
+                    nextIndex = i;
+                }
+            }
+        }
+        if (nextIndex != -1)
+        {
+            Console.WriteLine($"Next Session: {sessionNames[nextIndex]} - {sessionDates[nextIndex]:dd MMMM yyyy} - {sessionDates[nextIndex]:hh:mm tt}");
+            Console.WriteLine($"Time Remaining: {TimeDifference.Days} days, {TimeDifference.Hours} hours");
+        }
+        else
+            Console.WriteLine("No upcoming sessions found.");
+
+    }
+
+    #endregion
+
 }
