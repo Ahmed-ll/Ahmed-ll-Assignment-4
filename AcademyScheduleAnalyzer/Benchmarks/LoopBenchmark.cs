@@ -2,6 +2,9 @@
 
 namespace AcademyScheduleAnalyzer.Benchmarks;
 
+#region Part 23 — Benchmark Memory Usage
+[MemoryDiagnoser]
+#endregion 
 public class LoopBenchmark
 {
     #region Part 22 — Benchmark Different Loop Sizes
