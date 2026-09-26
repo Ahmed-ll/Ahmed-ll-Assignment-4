@@ -37,6 +37,148 @@ class Program
         };
 
         #endregion
+
+        #region Part 31 — Console Menu
+
+        while (true)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("===================================");
+            Console.WriteLine("Academy Schedule Analyzer");
+            Console.WriteLine("===================================");
+
+            Console.WriteLine("1. Display all sessions");
+            Console.WriteLine("2. Search for a session");
+            Console.WriteLine("3. Sort session names");
+            Console.WriteLine("4. Reverse session names");
+            Console.WriteLine("5. Find session index");
+            Console.WriteLine("6. Check if session exists");
+            Console.WriteLine("7. Show duration statistics");
+            Console.WriteLine("8. Show session date details");
+            Console.WriteLine("9. Show past and upcoming sessions");
+            Console.WriteLine("10. Find next session");
+            Console.WriteLine("11. Compare two session dates");
+            Console.WriteLine("12. Read and validate a custom date");
+            Console.WriteLine("13. Select session by index");
+            Console.WriteLine("14. Validate session duration");
+            Console.WriteLine("15. Generate report using string");
+            Console.WriteLine("16. Generate report using StringBuilder");
+            Console.WriteLine("0. Exit");
+
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.Write("\nChoose an option: ");
+            int option = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            switch (option)
+            {
+                case 1:
+                    // Display all sessions
+                    DisplayAllSessions(sessionNames, sessionDates, sessionDurations);
+                    break;
+
+                case 2:
+                    // Search for a session
+                    SearchSessionByName(sessionNames, sessionDates, sessionDurations);
+                    break;
+
+                case 3:
+                    // Sort session names
+                    SortSessionsByName(sessionNames);
+                    break;
+
+                case 4:
+                    // Reverse session names
+                    ReverseSessionNames(sessionNames);
+                    break;
+
+                case 5:
+                    // Find session index
+                    FindSessionIndex(sessionNames);
+                    break;
+
+                case 6:
+                    // Check if session exists
+                    CheckSessionExists(sessionNames);
+                    break;
+
+                case 7:
+                    // Show duration statistics
+                    Console.WriteLine($"Total Duration: {GetTotalDuration(sessionDurations)} minutes");
+                    Console.WriteLine($"Average Duration: {GetAverageDuration(sessionDurations)} minutes");
+                    Console.WriteLine($"Longest Duration: {GetLongestDuration(sessionDurations)} minutes");
+                    Console.WriteLine($"Shortest Duration: {GetShortestDuration(sessionDurations)} minutes");
+                    break;
+
+                case 8:
+                    // Show session date details
+                    Console.Write("Enter session name: ");
+                    string sessionNameForDetails = Console.ReadLine();
+                    DisplaySessionDateDetails(sessionNames, sessionDates, sessionDurations, sessionNameForDetails);
+                    break;
+
+                case 9:
+                    // Show past and upcoming sessions
+                    DisplayPastAndUpcomingSessions(sessionNames, sessionDates);
+                    break;
+
+                case 10:
+                    // Find next session
+                    FindNextSession(sessionNames, sessionDates);
+                    break;
+
+                case 11:
+                    // Compare two session dates
+                    Console.Write("Enter first session name: ");
+                    string sessionOne = Console.ReadLine();
+                    Console.Write("Enter second session name: ");
+                    string sessionTwo = Console.ReadLine();
+                    GetTwoSessionsDateDifference(sessionOne, sessionTwo, sessionNames, sessionDates);
+                    break;
+
+                case 12:
+                    // Read and validate a custom date
+                    GetDate();
+                    break;
+
+                case 13:
+                    // Select session by index
+                    Console.Write("Enter session index: ");
+                    int selectedIndex = int.Parse(Console.ReadLine());
+                    ReadSessionDate(sessionNames, sessionDates, selectedIndex);
+                    break;
+
+                case 14:
+                    // Validate session duration
+                    ValidateDuration();
+                    break;
+
+                case 15:
+                    // Generate report using string
+                    ScheduleReportUsingString(sessionNames, sessionDates, sessionDurations);
+                    break;
+
+                case 16:
+                    // Generate report using StringBuilder
+                    ScheduleReportUsingStringBuilder(sessionNames, sessionDates, sessionDurations);
+                    break;
+
+                case 0:
+                    Console.WriteLine("Exiting...");
+                    return;
+
+                default:
+                    Console.WriteLine("Invalid option.");
+                    break;
+            }
+
+            Console.WriteLine();
+        }
+
+        #endregion
+
     }
 
     #region Part 2 — Display All Sessions
