@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 using System.Threading.Channels;
 
 namespace AcademyScheduleAnalyzer;
@@ -446,7 +447,33 @@ class Program
                       $"{sessionDates[0].ToString("dd MMMM yyyy")}\n" +
                       $"{sessionDates[0].ToString("dddd, dd MMMM yyyy")}\n" +
                       $"{sessionDates[0].ToString("hh:mm tt")}");
-    
-    #endregion                 
+
+    #endregion
+
+    #region Part 14 — Read and Validate a Date
+
+    static void GetDate()
+    {
+        bool isValid = false;
+
+        while (!isValid)
+        {
+            Console.Write("Enter Valid Date in Format (yyyy-MM-dd HH:mm): ");
+            string input = Console.ReadLine();
+
+            bool isValidDate = DateTime.TryParseExact(input, "yyyy-MM-dd HH:mm", null, DateTimeStyles.None, out DateTime date);
+
+            if (!isValidDate)
+                Console.WriteLine("Invalid date format. Please try again.");
+
+            else
+            {
+                isValid = true;
+                Console.WriteLine($"Date: {date}");
+            }
+        }
+    }
+
+    #endregion
 
 }
