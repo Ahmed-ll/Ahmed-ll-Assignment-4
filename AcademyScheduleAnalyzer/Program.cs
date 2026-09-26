@@ -476,4 +476,31 @@ class Program
 
     #endregion
 
+    #region Part 15 — Exception Handling: Menu Input
+
+    static void ValidateNumber()
+    {
+        bool isValid = false;
+
+        while (!isValid)
+        {
+            Console.Write("Enter number: ");
+
+            try
+            {
+                int number = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"The input is: {number}");
+                isValid = true;
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("The input is not a number, please enter a valid number.");
+                isValid = false;
+            }
+        }
+    }
+
+    #endregion
+
 }
