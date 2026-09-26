@@ -3,6 +3,7 @@ using BenchmarkDotNet.Attributes;
 
 namespace AcademyScheduleAnalyzer.Benchmarks;
 
+[MemoryDiagnoser]
 public class StringBenchmark
 {
     private string[] sessionNames =
@@ -52,6 +53,36 @@ public class StringBenchmark
 
         for (int i = 0; i < sessionNames.Length; i++)
             result.AppendLine($"{sessionNames[i]}, {sessionDates[i]}, {sessionDurations[i]} minutes." );
+
+        return result.ToString();
+    }
+
+    #endregion
+
+    #region Part 24 — Benchmark Rules
+
+    [Params(100, 1000, 10000, 100000)]
+    public int Iterations;
+    private const string Text = "Marks";
+
+    [Benchmark]
+    public string StringConcatenationRules()
+    {
+        string result = "";
+
+        for (int i = 0; i < Iterations; i++)
+            result += Text;
+
+        return result;
+    }
+
+    [Benchmark]
+    public string StringBuilderConcatenationRules()
+    {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < Iterations; i++)
+            result.Append(Text);
 
         return result.ToString();
     }
