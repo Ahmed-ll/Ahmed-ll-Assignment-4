@@ -530,4 +530,30 @@ class Program
 
     #endregion
 
+    #region Part 17 — Throw an Exception
+
+    static void ValidateDuration()
+    {
+        try
+        {
+            Console.Write("Enter duration: ");
+            int duration = int.Parse(Console.ReadLine());
+
+            if (duration <= 0)
+                throw new ArgumentException("Duration must be greater than zero.");
+
+            Console.WriteLine("Duration accepted.");
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Duration must be a valid integer.");
+        }
+    }
+
+    #endregion
+
 }
