@@ -503,4 +503,31 @@ class Program
 
     #endregion
 
+    #region Part 16 — Exception Handling: Invalid Array Index
+
+    static void ValidateSessionIndex(string[] sessionNames)
+    {
+        bool isValid = false;
+
+        while (!isValid)
+        {
+            Console.Write("Enter session index: ");
+
+            try
+            {
+                int index = int.Parse(Console.ReadLine());
+
+                Console.WriteLine($"{sessionNames[index]}");
+                isValid = true;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine("The input is out of range, please enter a valid session index.");
+                isValid = false;
+            }
+        }
+    }
+
+    #endregion
+
 }
