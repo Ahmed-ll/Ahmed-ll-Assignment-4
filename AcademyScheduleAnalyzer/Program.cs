@@ -438,4 +438,15 @@ class Program
 
     #endregion
 
+    #region Part 13 — Date Formatting
+
+    static void DisplayFormattedSessionDates(string[] sessionNames, DateTime[] sessionDates) =>
+    Console.WriteLine($"{sessionDates[0].ToString("yyyy-MM-dd")}\n" +
+                      $"{sessionDates[0].ToString("dd/MM/yyyy")}\n" +
+                      $"{sessionDates[0].ToString("dd MMMM yyyy")}\n" +
+                      $"{sessionDates[0].ToString("dddd, dd MMMM yyyy")}\n" +
+                      $"{sessionDates[0].ToString("hh:mm tt")}");
+    
+    #endregion                 
+
 }
