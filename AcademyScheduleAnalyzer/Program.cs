@@ -593,4 +593,18 @@ class Program
 
     #endregion
 
+    #region Part 20 — Build the Same Report Using StringBuilder
+
+    static void ScheduleReportUsingStringBuilder(string[] sessionNames, DateTime[] sessionDates, int[] sessionsDurations)
+    {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < sessionNames.Length; i++)
+            result.AppendLine($"{sessionNames[i]}, {sessionDates[i]}, {sessionsDurations[i]} minutes.");
+
+        Console.WriteLine(result);
+    }
+
+    #endregion
+
 }
