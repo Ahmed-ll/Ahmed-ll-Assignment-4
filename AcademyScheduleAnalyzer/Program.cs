@@ -389,4 +389,19 @@ class Program
 
     #endregion
 
+    #region Part 11 — Past and Upcoming Sessions
+
+    static void DisplayPastAndUpcomingSessions(string[] sessionNames, DateTime[] sessionDates)
+    {
+        for (int i = 0; i < sessionDates.Length; i++)
+        {
+            if (sessionDates[i] < DateTime.Now)
+                Console.WriteLine($"Past: {sessionNames[i]} - {sessionDates[i]:dd MMMM yyyy}");
+            else
+                Console.WriteLine($"Upcoming: {sessionNames[i]} - {sessionDates[i]:dd MMMM yyyy}");
+        }
+    }
+
+    #endregion
+
 }
